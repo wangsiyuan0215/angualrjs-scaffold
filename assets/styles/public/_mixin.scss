@@ -1,0 +1,68 @@
+/* tap no highLight */
+/* 使用方式： @include tapNoHighLight; */
+@mixin tapNoHighLight {
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color:rgba(0, 0, 0, 0);
+    -ms-tap-highlight-color:rgba(0, 0, 0, 0);
+    -o-tap-highlight-color:rgba(0, 0, 0, 0);
+    tap-highlight-color:rgba(0, 0, 0, 0);
+}
+
+/* 背景渐变 */
+/* 仅适用两种颜色的渐变 */
+/* 使用方式： @include linear-gradient(90deg, startColor, endColor) */
+@mixin linear-gradient($deg , $colorForm, $colorTo) {
+    background-color: $colorForm;
+    background: -webkit-linear-gradient($deg, $colorForm, $colorTo);
+    background: -moz-linear-gradient($deg, $colorForm, $colorTo);
+    background: -o-linear-gradient($deg, $colorForm, $colorTo);
+    background: linear-gradient($deg, $colorForm, $colorTo);
+}
+
+/* 引入 IconFont 字体图标 */
+/* 使用方式一： @include importIconFont(id) */
+/* 使用方式二： @include importIconFont(id, 'iconfont') */
+@mixin importIconFont ($default_icon_font_id, $default_icon_font_name: 'iconfont') {
+    $whole_url: '//at.alicdn.com/t/' + $default_icon_font_id;
+
+    @font-face {
+        font-family: $default_icon_font_name;
+        src: url('#{$whole_url}.eot'); /* IE9*/
+        src: url('#{$whole_url}.eot?#iefix') format('embedded-opentype'),
+        url('#{$whole_url}.woff') format('woff'), url('#{$whole_url}.ttf') format('truetype'),
+        url('#{$whole_url}.svg#iconfont') format('svg'); /* iOS 4.1- */
+    }
+
+    .#{$default_icon_font_name} {
+        font-family: $default_icon_font_name, serif !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-stroke-width: 0.2px;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* 去除块级元素包含行级元素时的空余 */
+/* 使用方式： @include removeSpaceForInlineBlock(); */
+@mixin removeSpaceForInlineBlock () {
+    font-size: 0;
+    line-height: 0;
+    word-spacing: 0;
+    letter-spacing: -4px;
+
+    & > * {
+        letter-spacing: 0;
+        font-size: initial;
+        line-height: normal;
+        word-spacing: normal;
+    }
+}
+
+/* 当文字超出一定宽度时，在其末尾加上 "..." 省略号 */
+/* 注意：需要对选择器元素加上宽度的限制并且 overflow-x:hidden 时才可生效 */
+/* 使用方式： @include textEllipsis(); */
+@mixin textEllipsis () {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

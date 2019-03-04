@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="renderer" content="webkit" />
+        <meta name="robots" content="index,follow" />
+        <meta name="force-rendering" content="webkit" />
+        <meta name="format-detection" content="email=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- QQ应用模式 -->
+        <meta name="x5-page-mode" content="app" />
+        <!-- QQ强制竖屏 -->
+        <meta name="x5-orientation" content="portrait" />
+        <!-- uc强制竖屏 -->
+        <meta name="screen-orientation" content="portrait" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="营口信息采集系统" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+        <title>营口信息采集系统</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+        <base href="/ihrss/h5-yingkou-ocr/xy/" />
+        <script
+            type="text/javascript"
+            src="https://h5.ihrss.neusoft.com//ihrss/flexible-helper/yx/release/flexible-helper-1.0.1.min.js?designWidth=750&rem2px=100"
+        ></script>
+        <style>
+            [ng-cloak] {
+                display: none !important;
+            }
+        </style>
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://h5.ihrss.neusoft.com/ihrss/fc/yx/release/fc-1.2.3.min.css" />
+        <link rel="stylesheet" href="assets/styles/index.css">
+    </head>
+    <body ng-app="AppModule" ng-controller="baseController">
+        <!-- header -->
+        <div class="header" ng-cloak ng-if="!!header">
+            <div class="header--left" ng-if="header.back" ng-click="goBack()">
+                <img src="/ihrss/h5-yingkou-ocr/xy/assets/images/arrow_left_icon.png" alt="" />
+            </div>
+            <div class="header--title" ng-bind="header.title">拼命加载中</div>
+        </div>
+
+        <div class="container" ng-view>
+            <!-- todo... skeleton page for entry -->
+            <div class="skeletons">this is skeleton screen</div>
+        </div>
+        <fc-toast></fc-toast>
+
+        <!-- Normal with defer -->
+        <script
+            defer
+            type="text/javascript"
+            src="https://h5.ihrss.neusoft.com/ihrss/fc/yx/release/fc-1.2.2.min.js"
+        ></script>
+        <script
+            defer
+            type="text/javascript"
+            src="https://h5.ihrss.neusoft.com/ihrss/js2java/yx/release/js2java-1.0.1.min.js"
+        ></script>
+        <script
+            defer
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js"
+        ></script>
+        <script
+            defer
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"
+        ></script>
+        <!-- main -->
+        <script defer type="text/javascript" src="scripts/main.js"></script>
+        <script defer type="text/javascript" src="scripts/routes.js"></script>
+
+        <!-- resources -->
+        <script defer type="text/javascript" src="scripts/resources/api.js"></script>
+        <script defer type="text/javascript" src="scripts/resources/config.js"></script>
+        <script defer type="text/javascript" src="scripts/resources/languages/zh-CN.js"></script>
+
+        <!-- services -->
+        <script defer type="text/javascript" src="scripts/services/router.service.js"></script>
+        <script defer type="text/javascript" src="scripts/services/element.service.js"></script>
+        <script defer type="text/javascript" src="scripts/services/helpers.service.js"></script>
+
+        <!-- controllers -->
+        <script defer type="text/javascript" src="scripts/controllers/base.controller.js"></script>
+        <script defer type="text/javascript" src="scripts/controllers/error.controller.js"></script>
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"
+        ></script>
+    </body>
+</html>

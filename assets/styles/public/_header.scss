@@ -1,0 +1,47 @@
+/* header styles */
+.header {
+    $header_height: .88rem;
+
+    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    height: $header_height;
+    background-color: #FFFFFF;
+    border-bottom: solid 1px #E3E3E3;
+
+    .header--left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: $header_height;
+        height: $header_height;
+        padding-left: .3rem;
+        line-height: $header_height;
+
+        & > img {
+            width: auto;
+            height: .32rem;
+            margin-top: .28rem;
+            vertical-align: top;
+        }
+    }
+    .header--title {
+        position: relative;
+        width: 100%;
+        height: $header_height;
+        padding: 0 .88rem;
+        line-height: $header_height;
+        color: #3E3E3E;
+        font-size: .36rem;
+        text-align: center;
+    }
+
+    .header--left:active,
+    .header--left:hover {
+        opacity: .7;
+    }
+}
