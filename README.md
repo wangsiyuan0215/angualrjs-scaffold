@@ -16,13 +16,70 @@
 
 ### 2.1. 环境要求：
 
+* `Nginx`，高性能的 web 服务器，项目运行的基本环境，了解更多请点击「[传送门](https://nginx.org/en/docs/)」；
 * `Node.js` ，基于 LTS 长期支持的版本即可；
 * `Npm` 或 `Yarn` ，包管理工具，其中 Node.js 会自带安装 Npm，但是鉴于 Npm 对于依赖包的下载时好时坏（需要翻墙），推荐使用 Yarn；
 * 样式编写基于 SCSS 预编译语言，需要安装编译工具，这里推荐 「[Koala](http://koala-app.com/index-zh.html)」 或者 「[CodeKit for Mac](https://codekitapp.com/)」。
 
-### 2.2. 环境安装：
+### 2.2. `Nginx` 的配置
 
-再开始开发业务之前，请在 Terminal 或者命令行工具执行如下命令：
+**Nginx 的安装请自行搜索，这里不再赘述。**
+
+在开发阶段，由于需要联调接口，由于浏览器跨域机制的影响，想要直接访问不同域名下的接口地址是不可能的，因此需要通过 `nginx` 配置反向代理进行请求转发。
+
+首先确保已经启动 `nginx` 服务器，Mac 系统下执行如下命令：
+
+```bash
+sudo nginx
+```
+
+在 nginx 的目录下（Mac 系统下的路径一般是：`/usr/local/etc/nginx`），找到 `nginx.conf` 文件，再其最底部添加如下代码：
+
+```bash
+# 其他配置
+
+http {
+
+	# ... 其他配置
+	
+	include config/*; # <= this line
+}
+```
+
+保存后在 `nginx.conf` 同级目录下新建 `config` 文件夹，进入 `config` 并创建文件 `h5-[port]-[project-name]` 文件（请注意，没有后缀），并根据如下模板自行修改参数：
+
+```bash
+# h5-[port]-[project-name]
+# demo: h5-8106-edu-collection
+
+server {
+    listen [port];
+    index index.html;
+    root [你当前的项目绝对路径]; # demo: /Users/siyuan.wang/Jobs/东软/h5-edu-collection/;
+    
+    location / { 
+        index index.html;
+    }   
+    location [需要进行反向代理的接口地址的部分前缀 A] {
+        proxy_pass [以 A 为结尾的完整接口地址];
+    }
+	# demo:
+	# location /wechat/edu-collection/api/ {
+    #    proxy_pass https://app1.living-space.cn/wechat/edu-collection/api/;
+    # }  
+}
+```
+
+保存后重启 `nginx`，Mac 系统在命令行工具执行：
+
+```bash
+sudo nginx -s reload
+```
+**如果操作系统是 windows 的话，重启 `nginx` 需要在任务管理器中将 `nginx` 的进程全部杀死在启动 `nginx` 即可。**
+
+### 2.3. 依赖安装：
+
+开始开发业务之前，需要安装必要的三方包，请在者命令行工具执行如下命令：
 ```
 # 如果使用 Npm 进行安装
 npm install
@@ -32,7 +89,7 @@ yarn install
 ```
 如果你想要了解更多关于 Npm 和 Yarn 方面的知识，请点击「[传送门 - Npm](https://www.npmjs.com/)」或「[传送门 - Yarn](https://yarn.bootcss.com/)」。
 
-## 三、说明
+## 三、项目说明
 
 ### 3.1. 技术要求
 
@@ -73,4 +130,4 @@ root
 
 ## 四、部署
 
-请确保你已经执行过 `npm install` 或 `yarn install`，安装成功后请执行 `gulp default` 命令，该命令会在当前项目的根目录下生成 `build` 文件夹，即为打包后的成果物。
+确保当前项目依赖全部安装完成后请执行 `gulp default` 命令，该命令会在当前项目的根目录下生成 `build` 文件夹，即为打包后的成果物。
