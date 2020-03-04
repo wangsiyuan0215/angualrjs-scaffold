@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="renderer" content="webkit" />
+        <meta name="robots" content="index,follow" />
+        <meta name="force-rendering" content="webkit" />
+        <meta name="format-detection" content="email=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- QQ应用模式 -->
+        <meta name="x5-page-mode" content="app" />
+        <!-- QQ强制竖屏 -->
+        <meta name="x5-orientation" content="portrait" />
+        <!-- uc强制竖屏 -->
+        <meta name="screen-orientation" content="portrait" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+        <title>title</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+        <script src="https://h5.ihrss.neusoft.com//ihrss/flexible-helper/yx/release/flexible-helper-1.0.1.min.js?designWidth=750&rem2px=100"></script>
+        <link rel="stylesheet" href="https://h5.ihrss.neusoft.com/ihrss/fc/yx/release/fc-v1.5.3.min.css" />
+        <link rel="stylesheet" href="./assets/styles/index.css" />
+    </head>
+    <body ng-app="AppModule">
+        <fc-header></fc-header>
+        <div id="container" ng-cloak ng-view></div>
+
+        <fc-toast></fc-toast>
+
+        <script defer src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+        <script defer src="https://h5.ihrss.neusoft.com/ihrss/fc/yx/release/fc-v1.5.3.min.js"></script>
+        <script defer src="./__base__/v1_0_0/scripts/vendor/com4dom.helper.js"></script>
+        <script defer src="./__base__/v1_0_0/scripts/vendor/ramda-v0.26.1.min.js"></script>
+        <script defer src="./__base__/v1_0_0/scripts/vendor/angular-route-v1.5.8.min.js"></script>
+        <script defer src="./scripts/vendor/iconfont.js"></script>
+        <script defer src="./scripts/main.js"></script>
+        <script defer src="./scripts/resources/apis.config.js"></script>
+        <script defer src="./scripts/resources/config.config.js"></script>
+        <script defer src="./scripts/resources/routes.config.js"></script>
+        <script defer src="./scripts/resources/language/index.js"></script>
+        <script defer src="./scripts/services/router.service.js"></script>
+        <script defer src="./scripts/controllers/welcome.controller.js"></script>
+
+        <script defer src="./__base__/v1_0_0/scripts/error.handler.js?moduleName=AppModule"></script>
+        <script defer src="./__base__/v1_0_0/scripts/routes.render.js?moduleName=AppModule"></script>
+        <script defer src="./__base__/v1_0_0/scripts/filters/template.filter.js?moduleName=AppModule"></script>
+
+        <!-- build:version -->
+        <!-- endbuild -->
+        
+        <script src="./__base__/v1_0_0/scripts/vendor/angular-v1.7.8.min.js"></script>
+    </body>
+</html>

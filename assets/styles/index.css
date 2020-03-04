@@ -1,3 +1,161 @@
-html{height:100%;background-color:#fff}html body{height:100%;background-color:#fff;font-family:-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei', Tahoma, Simsun, sans-serif;-webkit-tap-highlight-color:transparent;-moz-tap-highlight-color:transparent;-ms-tap-highlight-color:transparent;-o-tap-highlight-color:transparent;tap-highlight-color:transparent}.margin__top--10{margin-top:0.1rem !important}.margin__top--20{margin-top:0.2rem !important}.margin__left--20{margin-left:0.2rem !important}.margin__right--20{margin-right:0.2rem !important}.margin__bottom--20{margin-bottom:0.2rem !important}.font__highlight--red{color:#f2615b !important}.font__highlight--blue{color:#4178fb !important}.font--bold{font-weight:bold !important}.fc-btn__like{-webkit-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out}.fc-btn__like:hover,.fc-btn__like:active{opacity:0.7}.container{position:relative;height:100%;overflow:hidden;padding-top:0.88rem;background-color:#f7f7fa}.container .skeletons{position:absolute;top:0;left:0;width:100%;height:100%;color:#000;font-size:0.2rem}.header{-webkit-box-sizing:content-box;box-sizing:content-box;position:fixed;top:0;left:0;right:0;z-index:1001;height:.88rem;background-color:#FFFFFF;border-bottom:solid 1px #E3E3E3}.header .header--left{position:absolute;top:0;left:0;z-index:2;width:.88rem;height:.88rem;padding-left:.3rem;line-height:.88rem}.header .header--left>img{width:auto;height:.32rem;margin-top:.28rem;vertical-align:top}.header .header--title{position:relative;width:100%;height:.88rem;padding:0 .88rem;line-height:.88rem;color:#3E3E3E;font-size:.36rem;text-align:center}.header .header--left:active,.header .header--left:hover{opacity:.7}
+@charset "UTF-8";
+/*
+ * @Author: SiYuan Wang
+ * @Date: 2020-01-07 16:21:57
+ * @Description: index
+ */
+/*
+ * @Author: SiYuan Wang
+ * @Date: 2019-01-23 06:04:05
+ * @Description: _variables
+ */
+/* common styles */
+/* 
+    tap no highLight
+    使用方式： @include tapNoHighLight;
+*/
+/* 
+    背景渐变
+    仅适用两种颜色的渐变
+    使用方式： @include linear-gradient(90deg, startColor, endColor)
+*/
+/*
+    根据不同的 dpr 获取不同的图片
+    使用方式： @include background-image('xx/xx/xx/image', map-get($IMAGE_SUFFIXES, PNG)');
+*/
+/* 
+    引入 IconFont 字体图标
+    使用方式一： @include importIconFont(id)
+    使用方式二： @include importIconFont(id, 'iconfont')
+*/
+/*
+    去除块级元素包含行级元素时的空余
+    使用方式： @include removeSpaceForInlineBlock();
+*/
+/* 
+    当文字超出一定宽度时，在其末尾加上 "..." 省略号
+    注意：需要对选择器元素加上宽度的限制并且 overflow-x:hidden 时才可生效
+    使用方式： @include textEllipsis();
+*/
+.icon {
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: -0.15em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  fill: currentColor; }
 
+#container.container--with-step {
+  padding-top: 2.4rem; }
+  #container.container--with-step .btn__container {
+    width: 3rem;
+    height: .8rem;
+    margin: 1.18rem auto 1rem; }
+    #container.container--with-step .btn__container .fc-btn--primary {
+      height: .8rem;
+      font-size: .36rem;
+      line-height: .5rem;
+      background: #3782FF;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+
+.steps {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin-bottom: 0.16rem;
+  padding: 0.64rem 0.24rem 0.45rem;
+  background-color: #fff; }
+  .steps .steps__item {
+    position: relative;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 25%;
+    padding: 0 .16rem; }
+    .steps .steps__item::before, .steps .steps__item::after {
+      position: absolute;
+      top: 0.08rem;
+      z-index: 1;
+      width: 50%;
+      height: 0.04rem;
+      background-color: #ccc;
+      content: ''; }
+    .steps .steps__item::before {
+      left: 0; }
+    .steps .steps__item::after {
+      right: 0; }
+    .steps .steps__item:first-of-type::before {
+      content: none; }
+    .steps .steps__item:last-of-type {
+      margin-right: 0; }
+      .steps .steps__item:last-of-type::after {
+        content: none; }
+    .steps .steps__item.done .steps-item__title,
+    .steps .steps__item.done .steps-item__description, .steps .steps__item.doing .steps-item__title,
+    .steps .steps__item.doing .steps-item__description {
+      color: #3385FF; }
+    .steps .steps__item.done::before, .steps .steps__item.done::after,
+    .steps .steps__item.done .steps-item__indicator {
+      background-color: #3385FF; }
+    .steps .steps__item.doing::before,
+    .steps .steps__item.doing .steps-item__indicator {
+      background-color: #3385FF; }
+    .steps .steps__item .steps-item__indicator {
+      position: relative;
+      z-index: 2;
+      width: 0.2rem;
+      height: 0.2rem;
+      margin-bottom: 0.24rem;
+      background-color: #ccc;
+      border-radius: 50%; }
+    .steps .steps__item .steps-item__title {
+      color: black;
+      font-weight: normal;
+      font-size: 0.24rem;
+      line-height: 0.32rem; }
+    .steps .steps__item .steps-item__description {
+      margin-top: 0.16rem;
+      color: #999;
+      font-size: 0.24rem;
+      line-height: 0.4rem; }
+
+.step__container {
+  margin-top: .16rem;
+  padding: .4rem .32rem;
+  background-color: #fff; }
+  .step__container > .step__title {
+    margin-bottom: .16rem;
+    color: #3782FF;
+    font-weight: 400;
+    font-size: .32rem;
+    line-height: .45rem; }
 /*# sourceMappingURL=index.css.map */

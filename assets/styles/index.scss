@@ -1,71 +1,151 @@
 /*
- * @Author: siyuan.wang
- * @Date: 2019-01-07 09:43:58
- * @Last Modified by: siyuan.wang
- * @Last Modified time: 2019-03-04 14:11:51
+ * @Author: SiYuan Wang
+ * @Date: 2020-01-07 16:21:57
+ * @Description: index
  */
- @import 'public/mixin';
 
- /* common styles */
- html {
-     height: 100%;
-     background-color: #fff;
- 
-     body {
-         height: 100%;
-         background-color: #fff;
-         font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', STHeiti, 'Microsoft Yahei',
-             Tahoma, Simsun, sans-serif;
-         @include tapNoHighLight();
-     }
- }
- .margin__top--10 {
-     margin-top: 0.1rem !important;
- }
- .margin__top--20 {
-     margin-top: 0.2rem !important;
- }
- .margin__left--20 {
-     margin-left: 0.2rem !important;
- }
- .margin__right--20 {
-     margin-right: 0.2rem !important;
- }
- .margin__bottom--20 {
-     margin-bottom: 0.2rem !important;
- }
- .font__highlight--red {
-     color: #f2615b !important;
- }
- .font__highlight--blue {
-     color: #4178fb !important;
- }
- .font--bold {
-     font-weight: bold !important;
- }
- .fc-btn__like {
-     transition: opacity 0.2s ease-in-out;
- }
- .fc-btn__like:hover,
- .fc-btn__like:active {
-     opacity: 0.7;
- }
- .container {
-     position: relative;
-     height: 100%;
-     overflow: hidden;
-     padding-top: 0.88rem;
-     background-color: #f7f7fa;
- 
-     .skeletons {
-         position: absolute;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         color: #000;
-         font-size: 0.2rem;
-     }
- }
- @import 'public/header';
- 
+@import './public/variables';
+@import './public/mixins';
+
+.icon {
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+    vertical-align: -0.15em;
+    user-select: none;
+    fill: currentColor;
+}
+#container {
+    
+    &.container--with-step {
+        padding-top: 2.4rem;
+        
+        .btn__container {
+            width: 3rem;
+            height: .8rem;
+            margin: 1.18rem auto 1rem;
+            
+            .fc-btn--primary {
+                height: .8rem;
+                font-size: .36rem;
+                line-height: .5rem;
+                background: $majorBlueColor;
+                user-select: none;
+            }
+        }
+    }
+}
+.steps {
+    $indicator-color: #ccc;
+    $indicator-color-active: #3385FF;
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.16rem;
+    padding: 0.64rem 0.24rem 0.45rem;
+    background-color: $majorWhiteColor;
+
+    .steps__item {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 25%;
+        padding: 0 .16rem;
+
+        &::before,
+        &::after {
+            position: absolute;
+            top: 0.08rem;
+            z-index: 1;
+            width: 50%;
+            height: 0.04rem;
+            background-color: $indicator-color;
+            content: '';
+        }
+        
+        &::before {
+            left: 0;
+        }
+        &::after {
+            right: 0;
+        }
+
+        &:first-of-type::before {
+            content: none;
+        }
+        &:last-of-type {
+            margin-right: 0;
+            
+            &::after {
+                content: none;
+            }
+        }
+        
+        &.done,
+        &.doing {
+            .steps-item__title,
+            .steps-item__description {
+                color: $indicator-color-active;
+            }
+        }
+        &.done {
+            &::before,
+            &::after,
+            .steps-item__indicator{
+                background-color: $indicator-color-active;
+            }
+        }
+        &.doing {
+            &::before,
+            .steps-item__indicator{
+                background-color: $indicator-color-active;
+            }
+        }
+        
+        .steps-item__indicator {
+            position: relative;
+            z-index: 2;
+            width: 0.2rem;
+            height: 0.2rem;
+            margin-bottom: 0.24rem;
+            background-color: $indicator-color;
+            border-radius: 50%;
+        }
+        .steps-item__title {
+            color: black;
+            font-weight: normal;
+            font-size: 0.24rem;
+            line-height: 0.32rem;
+        }
+        .steps-item__description {
+            margin-top: 0.16rem;
+            color: #999;
+            font-size: 0.24rem;
+            line-height: 0.4rem;
+        }
+    }
+}
+
+.step__container {
+    margin-top: .16rem;
+    padding: .4rem .32rem;
+    background-color: $majorWhiteColor;
+
+    & > .step__title {
+        margin-bottom: .16rem;
+        color: $majorBlueColor;
+        font-weight: 400;
+        font-size: .32rem;
+        line-height: .45rem;
+    }
+}

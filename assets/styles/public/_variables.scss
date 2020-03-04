@@ -1,0 +1,49 @@
+/*
+ * @Author: SiYuan Wang
+ * @Date: 2019-01-23 06:04:05
+ * @Description: _variables
+ */
+
+$backgroundColor: #f7f7fa;
+$borderLineColor: #e4e5e8;
+
+$majorWhiteColor: #fff;
+$majorBlackColor: #333;
+$majorBlueColor: #3782FF;
+$majorRedColor: #e76622;
+$majorGrayColor: #b3b3b3;
+
+$height_of_less_than_iPhone5: 550px;
+$box_shadow: 0 5px 10px -3px #e3e3e3;
+
+/* common styles */
+%placeholder_arrow {
+    position: absolute;
+    font-size: 0;
+    line-height: 0;
+    text-align: right;
+
+    & > img {
+        width: auto;
+        height: 0.24rem;
+        margin-top: 0.18rem;
+        vertical-align: top;
+    }
+}
+%placeholder_no_data {
+    padding-top: 2rem;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    & > img {
+        width: auto;
+        height: 3rem;
+        vertical-align: top;
+    }
+    & > p {
+        margin-top: 0.2rem;
+        color: $majorGrayColor;
+        font-size: 0.26rem;
+        line-height: 0.34rem;
+    }
+}
